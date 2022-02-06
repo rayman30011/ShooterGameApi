@@ -1,0 +1,40 @@
+version: '3.4'
+
+networks:
+  dockerapi-dev:
+    driver: bridge
+
+services:
+  sql:
+    image: postgres
+    ports:
+      - "5432:5432"
+    container_name: postgres
+    restart: always
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "ASD123qwe"
+      POSTGRES_DB: "ShooterGame"
+      POSTGRES_EXTENSIONS: citext
+    networks:
+      - dockerapi-dev
+
+  game.api:
+    image: gameapi
+    build:
+      context: .
+      dockerfile: Game.Api/Dockerfile
+    ports:
+      - 5000:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DB_CONNECTION_STRING=User ID=admin;Password=ASD123qwe;Host=sql;Port=5432;Database=ShooterGame;
+    depends_on:
+     - sql
+    networks:
+    - dockerapi-dev
+
+volumes:
+  db_volume:
