@@ -46,6 +46,8 @@ builder.Services.AddSwaggerGen(opt =>
 });
 
 var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+if (string.IsNullOrEmpty(connectionString))
+    connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<GameContext>(opt => 
 {
     opt.UseNpgsql(connectionString);

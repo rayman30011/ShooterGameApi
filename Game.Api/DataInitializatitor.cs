@@ -22,7 +22,9 @@ namespace Game.Api
                 Id = "AK_74",
                 Name = "AK sdafds",
                 Description = "fsdfsd",
-                Schema = ""
+                Schema = "",
+                Widht = 5,
+                Height = 2
             };
 
             var itemInstance = new ItemInstanceEntity { Id = Guid.NewGuid(), ItemId = "AK_74", Data = new JsonObject() };

@@ -5,7 +5,7 @@
     <DockerTargetOS>Linux</DockerTargetOS>
     <ProjectGuid>7084e62d-d8fe-49fd-a0f9-9a40c57146a5</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
+    <DockerServiceUrl>http://localhost:5000/swagger</DockerServiceUrl>
     <DockerServiceName>game.api</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>

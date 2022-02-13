@@ -22,7 +22,7 @@ namespace Game.Api.Controllers
         }
 
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}/items")]
         public async Task<IActionResult> GetById(Guid id)
         {
             var a = from stI in _gameContext.StorageInstances.Where(storage => storage.Id == id).Select(s => s.Items).FirstOrDefault()
@@ -30,7 +30,7 @@ namespace Game.Api.Controllers
                     select new
                     {
                         stI.Pos,
-                        Inst = inst
+                        Instance = inst,
                     };
 
             return Ok(a);

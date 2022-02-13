@@ -16,7 +16,6 @@ namespace Game.DataAccess.Config
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).IsRequired();
             builder.Property(x => x.Description).IsRequired();
-            builder.Property(x => x.Schema).IsRequired(false);
         }
     }
 
